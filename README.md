@@ -1,0 +1,1 @@
+# teste-trade-tech-fullstack
