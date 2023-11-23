@@ -10,7 +10,7 @@ export default function LayoutDashboard() {
       <Navbar />
       <div className="d-flex w-100">
         <Sidebar />
-        <div className="p-5">
+        <div className="p-5 w-100">
           <Outlet />
         </div>
       </div>
