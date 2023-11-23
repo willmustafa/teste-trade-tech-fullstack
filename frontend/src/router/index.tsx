@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import Results from "../pages/Results";
 import Historic from "../pages/Historic";
 import Main from "layout/Main";
+import LayoutDashboard from "layout/LayoutDashboard";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/app",
-    element: <Main />,
+    element: <LayoutDashboard />,
     children: [
       {
         path: "",
