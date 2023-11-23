@@ -4,6 +4,7 @@ import referee from "../assets/images/referee.png";
 import refereeRed from "../assets/images/referee-red.png";
 import soccerPlayer from "../assets/images/soccer-player.png";
 import Login from "components/login";
+import Register from "components/register";
 
 enum PageModule {
   LOGIN = "login",
@@ -45,6 +46,7 @@ export default function LoginView() {
               )}
             </div>
             {page === PageModule.LOGIN && <Login />}
+            {page === PageModule.REGISTER && <Register />}
             <button className="btn btn-primary my-3 w-100" type="submit">
               {page === PageModule.LOGIN ? "Entrar" : "Cadastrar"}
             </button>
