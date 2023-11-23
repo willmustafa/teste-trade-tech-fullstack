@@ -14,3 +14,7 @@ body {
 .bg-blue {
     background-color: var(--blue) !important;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
