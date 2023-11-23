@@ -1,9 +1,17 @@
-import React from "react";
+import React, { FormEvent, MouseEventHandler } from "react";
 
-export default function Register() {
+interface IRegister {
+  togglePage: MouseEventHandler<HTMLSpanElement>;
+}
+
+export default function Register({ togglePage }: IRegister) {
+  function submit(event: FormEvent) {
+    event.preventDefault();
+  }
+  
   return (
-    <>
-    <div className="mb-3">
+    <form onSubmit={submit}>
+      <div className="mb-3">
         <label htmlFor="name" className="form-label">
           Nome
         </label>
@@ -47,6 +55,20 @@ export default function Register() {
           placeholder="........"
         />
       </div>
-    </>
+      <button className="btn btn-primary my-3 w-100" type="submit">
+        Cadastrar
+      </button>
+      <div className="text-center">
+        <p>
+          Já é um membro?{" "}
+          <span
+            className="text-decoration-underline text-primary cursor-pointer"
+            onClick={togglePage}
+          >
+            Entrar
+          </span>
+        </p>
+      </div>
+    </form>
   );
 }

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { FormEvent, MouseEventHandler } from "react";
 
-export default function Login() {
+interface ILogin {
+  togglePage: MouseEventHandler<HTMLSpanElement>;
+}
+
+export default function Login({ togglePage }: ILogin) {
+  function submit(event: FormEvent) {
+    event.preventDefault();
+  }
+
   return (
-    <>
+    <form onSubmit={submit}>
       <div className="mb-3">
         <label htmlFor="user" className="form-label">
           Usuário
@@ -25,6 +33,20 @@ export default function Login() {
           placeholder="........"
         />
       </div>
-    </>
+      <button className="btn btn-primary my-3 w-100" type="submit">
+        Entrar
+      </button>
+      <div className="text-center">
+        <p>
+          Não é um membro?{" "}
+          <span
+            className="text-decoration-underline text-primary cursor-pointer"
+            onClick={togglePage}
+          >
+            Cadastrar-se
+          </span>
+        </p>
+      </div>
+    </form>
   );
 }
