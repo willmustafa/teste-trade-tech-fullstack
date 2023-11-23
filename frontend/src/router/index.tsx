@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Login";
+import LoginView from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import Results from "../pages/Results";
 import Historic from "../pages/Historic";
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Login />
+        element: <LoginView />
       },
     ]
   },
