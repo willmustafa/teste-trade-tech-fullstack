@@ -28,6 +28,7 @@ export default function Login({ togglePage }: ILogin) {
           id="user"
           placeholder="meuTimeÉ10"
           onChange={(e) => setUsername((e.target as any).value)}
+          required
         />
       </div>
       <div className="mb-3">
@@ -40,6 +41,7 @@ export default function Login({ togglePage }: ILogin) {
           id="password"
           placeholder="........"
           onChange={(e) => setPassword((e.target as any).value)}
+          required
         />
       </div>
       <button className="btn btn-primary my-3 w-100" type="submit">
