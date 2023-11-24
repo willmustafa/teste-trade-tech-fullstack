@@ -6,6 +6,7 @@ namespace MyChampionship.Models
     [Table("User")]
     public class User
     {
+        [Key]
         [Column("Id")]
         public int Id { get; set; }
 
