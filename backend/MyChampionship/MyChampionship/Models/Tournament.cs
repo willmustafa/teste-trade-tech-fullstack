@@ -13,6 +13,6 @@ namespace MyChampionship.Models
 
         public virtual ICollection<Game> Games { get; set; } = null!;
 
-        public virtual ICollection<Team> Teams { get; set; } = null!;
+        public virtual ICollection<TournamentTeam> Teams { get; set; } = null!;
     }
 }
