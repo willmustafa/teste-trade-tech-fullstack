@@ -11,5 +11,7 @@ namespace MyChampionship.Context
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<MyChampionship.Models.Team>? Team { get; set; }
     }
 }
