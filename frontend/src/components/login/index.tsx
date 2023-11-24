@@ -1,12 +1,19 @@
-import React, { FormEvent, MouseEventHandler } from "react";
+import { FormEvent, MouseEventHandler, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ILogin {
   togglePage: MouseEventHandler<HTMLSpanElement>;
 }
 
 export default function Login({ togglePage }: ILogin) {
-  function submit(event: FormEvent) {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  async function submit(event: FormEvent) {
     event.preventDefault();
+
+    navigate("/app");
   }
 
   return (
@@ -20,6 +27,7 @@ export default function Login({ togglePage }: ILogin) {
           className="form-control"
           id="user"
           placeholder="meuTimeÉ10"
+          onChange={(e) => setUsername((e.target as any).value)}
         />
       </div>
       <div className="mb-3">
@@ -31,6 +39,7 @@ export default function Login({ togglePage }: ILogin) {
           className="form-control"
           id="password"
           placeholder="........"
+          onChange={(e) => setPassword((e.target as any).value)}
         />
       </div>
       <button className="btn btn-primary my-3 w-100" type="submit">

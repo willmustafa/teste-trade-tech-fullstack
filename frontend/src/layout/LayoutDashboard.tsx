@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./LayoutDashboard.module.css";
 import { Outlet } from "react-router-dom";
 import Navbar from "components/navbar";
+import { ToastContainer } from "react-toastify";
 
 export default function LayoutDashboard() {
   return (
@@ -14,6 +15,7 @@ export default function LayoutDashboard() {
           <Outlet />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
