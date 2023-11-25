@@ -20,6 +20,7 @@ export default function Register({ togglePage }: IRegister) {
           className="form-control"
           id="name"
           placeholder="Edson Arantes do Nascimento"
+          required
         />
       </div>
       <div className="mb-3">
@@ -31,6 +32,7 @@ export default function Register({ togglePage }: IRegister) {
           className="form-control"
           id="user"
           placeholder="meuTimeÉ10"
+          required
         />
       </div>
       <div className="mb-3">
@@ -42,6 +44,7 @@ export default function Register({ togglePage }: IRegister) {
           className="form-control"
           id="email"
           placeholder="meu@time.com"
+          required
         />
       </div>
       <div className="mb-3">
@@ -53,6 +56,7 @@ export default function Register({ togglePage }: IRegister) {
           className="form-control"
           id="password"
           placeholder="........"
+          required
         />
       </div>
       <button className="btn btn-primary my-3 w-100" type="submit">

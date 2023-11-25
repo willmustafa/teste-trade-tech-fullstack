@@ -7,6 +7,7 @@ import router from "./router";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
+import 'react-toastify/dist/ReactToastify.css';
 import 'assets/styles/base.css'
 
 const root = ReactDOM.createRoot(

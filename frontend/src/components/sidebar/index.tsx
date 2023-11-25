@@ -8,7 +8,8 @@ export default function Sidebar() {
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
             <NavLink
-              to="/app/resultados"
+              to="/app"
+              end
               className={({ isActive }) =>
                 isActive
                   ? "nav-link text-center active"
@@ -16,11 +17,12 @@ export default function Sidebar() {
               }
               aria-current="page"
             >
-              Resultados
+              Campeonato
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink
+              end
               to="/app/historico"
               className={({ isActive }) =>
                 isActive
