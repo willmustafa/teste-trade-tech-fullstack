@@ -20,7 +20,6 @@ export default function Results() {
   }, []);
 
   function teamResponseToSelectable(res: any) {
-    console.log(res);
     return {
       value: res.id,
       label: res.name,
