@@ -7,7 +7,7 @@ namespace MyChampionship.Models
     public class User
     {
         [Key]
-        [Column("Id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Column("Username")]
