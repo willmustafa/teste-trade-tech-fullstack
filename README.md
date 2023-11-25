@@ -31,3 +31,5 @@ Infelizmente não consegui completar o teste todo por falta de tempo, listei aqu
 - [Front e API] Rodar com Docker
 - [Front e API] Testes
 - [Front] Login com Gmail
+- [Front] Route Guard
+- [Front] Logout
