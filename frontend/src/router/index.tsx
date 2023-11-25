@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginView from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
 import Results from "../pages/Results";
 import Historic from "../pages/Historic";
 import Main from "layout/Main";
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Dashboard />,
-      },
-      {
-        path: "resultados",
         element: <Results />,
       },
       {
