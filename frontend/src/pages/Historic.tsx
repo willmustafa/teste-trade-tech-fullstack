@@ -1,4 +1,3 @@
-import TournamentCard from "components/tournament-card";
 import TournamentHistoric from "components/tournament-historic";
 import React from "react";
 
