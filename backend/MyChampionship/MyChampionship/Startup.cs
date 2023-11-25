@@ -17,6 +17,16 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+        });
+
         services.AddAuthentication();
 
         services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DBHost")));
@@ -84,6 +94,7 @@ public class Startup
 
         app.UseRouting();
 
+        app.UseCors();
         app.UseAuthentication();
         app.UseAuthorization();
 
