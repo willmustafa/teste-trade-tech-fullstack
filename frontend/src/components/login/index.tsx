@@ -1,11 +1,14 @@
+import { FetchController } from "controllers/Fetch";
 import { FormEvent, MouseEventHandler, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface ILogin {
   togglePage: MouseEventHandler<HTMLSpanElement>;
+  setWrongPassword?: Function;
 }
 
-export default function Login({ togglePage }: ILogin) {
+export default function Login({ togglePage, setWrongPassword }: ILogin) {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -13,7 +16,14 @@ export default function Login({ togglePage }: ILogin) {
   async function submit(event: FormEvent) {
     event.preventDefault();
 
-    navigate("/app");
+    await new FetchController()
+      .getInstance()
+      .post("auth/login", { username, password })
+      .then(() => navigate("/app"))
+      .catch((e) => {
+        if (setWrongPassword) setWrongPassword(true);
+        toast.error("Usuário ou senha inválidos.");
+      });
   }
 
   return (

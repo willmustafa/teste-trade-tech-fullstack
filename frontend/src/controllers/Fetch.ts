@@ -1,51 +1,49 @@
-import axios, { type AxiosInstance, type CreateAxiosDefaults } from 'axios'
-import { toast } from 'react-toastify'
+import axios, { type AxiosInstance, type CreateAxiosDefaults } from "axios";
+import { toast } from "react-toastify";
 
 export class FetchController {
   constructor() {
-    this.axiosInstance = axios.create(this.defaultConfig())
-    this.setOnRequest()
-    this.setOnResponse()
+    this.axiosInstance = axios.create(this.defaultConfig());
   }
 
-  private axiosInstance: AxiosInstance
+  private axiosInstance: AxiosInstance;
 
   private defaultConfig(): CreateAxiosDefaults {
     return {
+      baseURL: process.env.REACT_APP_API_URL,
       withCredentials: false,
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      responseType: 'json'
-    }
+      responseType: "json",
+    };
   }
 
   private setOnRequest() {
     this.axiosInstance.interceptors.request.use(
       (config) => {
-        return config
+        return config;
       },
       (err) => {
-        return Promise.reject(err)
+        return Promise.reject(err);
       }
-    )
+    );
   }
 
   private setOnResponse() {
     this.axiosInstance.interceptors.response.use(
       (res) => {
-        return res
+        return res;
       },
       (err) => {
-        toast.error('Ocorreu um erro.')
-        return Promise.reject(err.response)
+        toast.error("Ocorreu um erro.");
+        return Promise.reject(err.response);
       }
-    )
+    );
   }
 
-
   getInstance(): AxiosInstance {
-    return this.axiosInstance
+    return this.axiosInstance;
   }
 }

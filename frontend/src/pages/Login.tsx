@@ -16,7 +16,8 @@ export default function LoginView() {
   const [wrongPassword, setWrongPassword] = useState(false);
 
   function togglePage() {
-    const _page = page === PageModule.LOGIN ? PageModule.REGISTER : PageModule.LOGIN;
+    const _page =
+      page === PageModule.LOGIN ? PageModule.REGISTER : PageModule.LOGIN;
     setPage(_page);
   }
 
@@ -36,9 +37,16 @@ export default function LoginView() {
                 <img src={soccerPlayer} alt="" className="w-25" />
               )}
             </div>
-            {page === PageModule.LOGIN && <Login togglePage={togglePage} />}
-            {page === PageModule.REGISTER && <Register togglePage={togglePage} />}
-          </div>   
+            {page === PageModule.LOGIN && (
+              <Login
+                togglePage={togglePage}
+                setWrongPassword={setWrongPassword}
+              />
+            )}
+            {page === PageModule.REGISTER && (
+              <Register togglePage={togglePage} />
+            )}
+          </div>
         </Card>
       </div>
     </div>
