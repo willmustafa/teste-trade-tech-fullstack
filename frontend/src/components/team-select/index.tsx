@@ -7,9 +7,14 @@ interface ITeamSelect {
     value: string;
     label: string;
   }[];
+  handleCreate: (inputValue: string) => void;
 }
 
-export default function TeamSelect({ options, onChange }: ITeamSelect) {
+export default function TeamSelect({
+  options,
+  onChange,
+  handleCreate,
+}: ITeamSelect) {
   return (
     <Creatable
       isMulti
@@ -19,6 +24,7 @@ export default function TeamSelect({ options, onChange }: ITeamSelect) {
       onChange={(choice) => onChange(choice)}
       closeMenuOnSelect={false}
       noOptionsMessage={() => "Sem mais opções"}
+      onCreateOption={handleCreate}
     />
   );
 }

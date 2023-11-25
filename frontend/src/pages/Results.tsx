@@ -1,22 +1,40 @@
 import TeamSelect from "components/team-select";
 import TournamentBracket from "components/tournament-bracket";
-import React, { useState } from "react";
+import { FetchController } from "controllers/Fetch";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Results() {
+  const fetch = new FetchController().getInstance();
   const [selectedTeams, setSelectedTeams] = useState([]);
   const [tournamentBracket, setTournamentBracket] = useState<any[]>([]);
+  const [options, setOptions] = useState<any[]>([]);
 
-  const options = [
-    { value: "teamA", label: "Team A" },
-    { value: "teamB", label: "Team B" },
-    { value: "teamC", label: "Team C" },
-    { value: "teamD", label: "Team D" },
-    { value: "teamE", label: "Team E" },
-    { value: "teamF", label: "Team F" },
-    { value: "teamG", label: "Team G" },
-    { value: "teamH", label: "Team H" },
-  ];
+  useEffect(() => {
+    fetch
+      .get("Teams")
+      .then((res) =>
+        setOptions(res.data.map((el: any) => teamResponseToSelectable(el)))
+      )
+      .catch((e) => console.error(e));
+  }, []);
+
+  function teamResponseToSelectable(res: any) {
+    console.log(res);
+    return {
+      value: res.id,
+      label: res.name,
+    };
+  }
+
+  async function createTeam(name: string) {
+    await fetch
+      .post("Teams", { name })
+      .then((res) => {
+        setOptions([...options, teamResponseToSelectable(res.data)]);
+      })
+      .catch((e) => toast.error("Ocorreu um erro na criação do time."));
+  }
 
   function simulateTournament() {
     if (selectedTeams.length < 8) toast.error("Selecione pelo menos 8 times.");
@@ -185,7 +203,11 @@ export default function Results() {
     <div className="row">
       <div className="d-flex gap-4 col-12">
         <div className="col-10">
-          <TeamSelect options={options} onChange={setSelectedTeams} />
+          <TeamSelect
+            options={options}
+            onChange={setSelectedTeams}
+            handleCreate={createTeam}
+          />
         </div>
         <div className="col-2">
           <button className="btn btn-primary" onClick={simulateTournament}>
@@ -194,7 +216,9 @@ export default function Results() {
         </div>
       </div>
       <div className="col-12 mt-5">
-        {tournamentBracket.length > 0 && <TournamentBracket tournamentBracket={tournamentBracket} />}
+        {tournamentBracket.length > 0 && (
+          <TournamentBracket tournamentBracket={tournamentBracket} />
+        )}
       </div>
     </div>
   );
