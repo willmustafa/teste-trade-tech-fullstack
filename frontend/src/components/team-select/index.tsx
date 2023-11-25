@@ -1,18 +1,24 @@
 import React from "react";
 import Creatable from "react-select/creatable";
 
-export default function TeamSelect() {
-  const options = [
-    { value: "teamA", label: "Team A" },
-    { value: "teamB", label: "Team B" },
-  ];
+interface ITeamSelect {
+  onChange: Function;
+  options: {
+    value: string;
+    label: string;
+  }[];
+}
 
+export default function TeamSelect({ options, onChange }: ITeamSelect) {
   return (
     <Creatable
       isMulti
       options={options}
       formatCreateLabel={(inputValue) => `Criar novo time: ${inputValue}`}
       placeholder="Selecione os 8 times participantes"
+      onChange={(choice) => onChange(choice)}
+      closeMenuOnSelect={false}
+      noOptionsMessage={() => "Sem mais opções"}
     />
   );
 }
