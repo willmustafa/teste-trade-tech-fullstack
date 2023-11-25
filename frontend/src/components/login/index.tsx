@@ -19,7 +19,10 @@ export default function Login({ togglePage, setWrongPassword }: ILogin) {
     await new FetchController()
       .getInstance()
       .post("auth/login", { username, password })
-      .then(() => navigate("/app"))
+      .then((res) => {
+        window.sessionStorage.setItem("token", res.data.token);
+        navigate("/app");
+      })
       .catch((e) => {
         if (setWrongPassword) setWrongPassword(true);
         toast.error("Usuário ou senha inválidos.");
